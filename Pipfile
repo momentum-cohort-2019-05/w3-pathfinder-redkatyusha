@@ -5,11 +5,13 @@ name = "pypi"
 
 [packages]
 pillow = "*"
+pil = "*"
 
 [dev-packages]
 yapf = "*"
 prospector = "*"
 pytest = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.7"
