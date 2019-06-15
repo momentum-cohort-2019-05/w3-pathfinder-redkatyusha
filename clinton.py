@@ -49,8 +49,10 @@ class ElevationMap:
         return (elevation - min_elevation) / (max_elevation - min_elevation)
 
 
-def draw_grayscale_gradient(filename, width, height):
+def draw_grayscale_gradient(self, filename, width, height):
     image = Image.new(mode='L', size=(width, height))
+    min_elevation = self.min_elevation()
+    max_elevation = self.max_elevation()
     for x in range(width):
         for y in range(height):
             image.putpixel((x, y), (int(x / width * 255),))
@@ -58,12 +60,10 @@ def draw_grayscale_gradient(filename, width, height):
 
 
 if __name__ == "__main__":
-    my_str = "10 12 9 345 2 78"
-    read_line_of_ints(my_str)
 
-    elevations = read_file_into_ints('elevation_test.txt')
+    elevations = read_file_into_ints('elevation_small.txt')
 
     e_map = ElevationMap(elevations)
     print(e_map.intensity_at_coordinate(1, 2))
 
-    draw_grayscale_gradient('test.png', 400, 400)
+    draw_grayscale_gradient('map.png', 400, 400)
